@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Biological τ — Metabolism and Breath as Temporal–Energetic Exchange</title>
+  <meta name="description" content="A companion paper applying the τ framework to human metabolism: how mass leaves the body via CO₂/H₂O and energy, with quantitative tests and checklists." />
+
+  <style>
+    :root{
+      --bg:#0b0f19;--panel:#121827;--ink:#e6e8ee;--muted:#a3acc2;
+      --accent:#7c3aed;--accent-2:#f59e0b;--rule:#2a3348;--code:#0e1422;
+      --link:#9aa8ff;--maxw:980px;
+    }
+    @media (prefers-color-scheme: light){
+      :root{--bg:#ffffff;--panel:#f6f7fb;--ink:#0f1222;--muted:#4a546e;
+        --rule:#e4e7f0;--code:#f1f3f9;--link:#2b59ff;}
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:
+        radial-gradient(1200px 800px at 20% -10%, rgba(124,58,237,.08), transparent 45%),
+        radial-gradient(1000px 700px at 110% 10%, rgba(245,158,11,.08), transparent 40%),
+        var(--bg);
+      color:var(--ink);
+      font:16px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+    }
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:48px 20px 96px}
+    header{text-align:center;margin-bottom:32px}
+    .logo{
+      font-size:clamp(36px,6vw,64px);
+      font-weight:800;
+      letter-spacing:2px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      display:inline-block;
+      margin-bottom:12px;
+    }
+    h1{margin:0 0 8px;font-size:clamp(26px,4.5vw,38px);line-height:1.2}
+    .subtitle{color:var(--muted);font-size:15px}
+    .meta{margin-top:8px;color:var(--muted);font-size:14px}
+    nav{margin:26px auto;max-width:740px;text-align:left;background:var(--panel);
+      border:1px solid var(--rule);border-radius:12px;padding:16px 20px}
+    nav a{color:var(--link);text-decoration:none}
+    nav a:hover{text-decoration:underline}
+    nav ul{margin:0;padding-left:18px}
+    section{background:rgba(255,255,255,.02);border:1px solid var(--rule);
+      border-radius:16px;padding:24px 20px;margin:18px 0}
+    h2{margin:0 0 8px;font-size:clamp(20px,3.5vw,26px)}
+    h3{margin:16px 0 8px;font-size:18px}
+    p{margin:10px 0 0}
+    .equation{display:block;margin:12px 0;padding:12px 14px;background:var(--code);
+      border:1px solid var(--rule);border-radius:10px;
+      font-family:ui-monospace,Menlo,Consolas,"Courier New",monospace;overflow:auto;white-space:nowrap}
+    .abstract{font-style:italic;color:var(--muted)}
+    .callout{padding:14px;border:1px dashed var(--rule);border-radius:12px;background:rgba(245,158,11,.08)}
+    footer{margin-top:26px;color:var(--muted);font-size:13px;text-align:center}
+    table{width:100%;border-collapse:collapse;margin:8px 0}
+    th,td{border:1px solid var(--rule);padding:8px;vertical-align:top}
+    th{background:var(--panel);text-align:left}
+    code{background:var(--code);padding:1px 4px;border-radius:4px}
+    @media print{body{background:#fff}nav,section{break-inside:avoid}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">Bio τ</div>
+      <h1>Biological τ — Metabolism and Breath as Temporal–Energetic Exchange</h1>
+      <div class="subtitle">How body mass leaves as CO₂/H₂O and heat, expressed in a τ-first formalism</div>
+      <div class="meta">Author: Tristan White • v1.0 • Updated: Mon, Sep 1, 2025, 11:20 AM EDT</div>
+      <nav aria-label="Contents">
+        <ul>
+          <li><a href="#abstract">Abstract</a></li>
+          <li><a href="#introduction">1. Introduction</a></li>
+          <li><a href="#stoich">2. Metabolic Stoichiometry & Mass Balance</a></li>
+          <li><a href="#tau">3. τ-Formulation for Metabolism</a></li>
+          <li><a href="#energy">4. Energy & Entropy Accounting</a></li>
+          <li><a href="#benchmarks">5. Quantitative Benchmarks & Examples</a></li>
+          <li><a href="#implications">6. Implications</a></li>
+          <li><a href="#conclusion">7. Conclusion</a></li>
+          <li><a href="#references">References</a></li>
+          <li><a href="#appendix-a">Appendix A — τ-First Biological Dictionary</a></li>
+          <li><a href="#appendix-b">Appendix B — Test Protocols (Checklist)</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="abstract"><h2>Abstract</h2>
+        <p class="abstract">
+          We apply the τ framework (τ ≡ E/c³ ≡ m/c) to human metabolism. Oxidation of macronutrients converts bodily mass into CO₂ and H₂O while releasing energy as work and heat. Expressed in τ units, breathing is a τ-exchange with the environment. We provide balanced reactions, mass/energy accounting, and practical, quantitative tests (indirect calorimetry, CO₂ mass capture, isotopic methods) to validate the τ interpretation in vivo.
+        </p>
+      </section>
+
+      <section id="introduction"><h2>1. Introduction</h2>
+        <p>
+          “Weight loss” is often discussed energetically, yet <em>mass</em> conservation reveals that most lost mass exits as exhaled CO₂ and H₂O. In parallel, energy is dissipated as heat and exported via biochemical work. In a τ-first view, where <span class="equation" style="display:inline-block">m = cτ, E = c³τ</span>, metabolic processes move τ between body and environment through gases and photons, yielding testable relations between gas exchange, heat production, and body-mass change.
+        </p>
+      </section>
+
+      <section id="stoich"><h2>2. Metabolic Stoichiometry & Mass Balance</h2>
+        <p>Representative fat oxidation (average triacylglycerol):</p>
+        <div class="equation">C₅₅H₁₀₄O₆ + 78 O₂ → 55 CO₂ + 52 H₂O + energy</div>
+        <p>
+          Mass balance (per mole of C₅₅H₁₀₄O₆ ≈ 861.4 g): O₂ consumed ≈ 78×32 = 2496 g; products: CO₂ ≈ 55×44.01 = 2420.6 g, H₂O ≈ 52×18.015 = 936.8 g. Total reactants ≈ 861.4 + 2496 ≈ 3357.4 g = total products ≈ 3357.4 g.
+        </p>
+        <p>
+          Thus, most mass leaves as <strong>CO₂</strong> (gas) and <strong>H₂O</strong> (vapor/liquid), while the <em>energy</em> of oxidation is exported as heat/work.
+        </p>
+      </section>
+
+      <section id="tau"><h2>3. τ-Formulation for Metabolism</h2>
+        <p>
+          Define τ as the “temporal charge” carried by matter/energy:
+        </p>
+        <div class="equation">τ = m/c = E/c³,  Δτ = Δm/c = ΔE/c³</div>
+        <p>
+          A breath exchanges Δm_air with the environment, hence Δτ_air = Δm_air/c. Summed over time, net mass loss <span class="equation" style="display:inline-block">Δm_body = −(m_CO₂ + m_H₂O + other excreta)</span> corresponds to <span class="equation" style="display:inline-block">Δτ_body = Δm_body/c</span>.
+        </p>
+        <p>Gas-exchange observables (VO₂, VCO₂) thus provide direct τ-flux estimates.</p>
+      </section>
+
+      <section id="energy"><h2>4. Energy & Entropy Accounting</h2>
+        <p>
+          With respiratory quotient <span class="equation" style="display:inline-block">RQ = VCO₂ / VO₂</span>, substrate mix is inferred (fat ≈ 0.7, carbs ≈ 1.0). Energy expenditure (EE) by indirect calorimetry can be estimated (Weir-type):
+        </p>
+        <div class="equation">EE ≈ 3.941·VO₂ + 1.106·VCO₂  (kcal·day⁻¹; VO₂,VCO₂ in L·day⁻¹)</div>
+        <p>
+          Because <span class="equation" style="display:inline-block">E = c³τ</span>, measured EE maps to a τ-rate: <span class="equation" style="display:inline-block">\dot τ_E = EE / c³</span>, while gas mass flow maps to <span class="equation" style="display:inline-block">\dot τ_m = \dot m / c</span>. A consistent account requires <span class="equation" style="display:inline-block">\dot τ_E ≈ \dot τ_m</span> after storage and mechanical work are included.
+        </p>
+      </section>
+
+      <section id="benchmarks"><h2>5. Quantitative Benchmarks & Examples</h2>
+        <h3>5.1 Per-breath CO₂ mass (at rest)</h3>
+        <p>
+          If VCO₂ ≈ 200 mL·min⁻¹ and respiratory rate ≈ 12 min⁻¹, then per breath ≈ 16–20 mL CO₂. At 1 atm, 37 °C, that is roughly 30–40 mg CO₂ per breath (order-of-magnitude), i.e., a per-breath τ export of ≈ (3–4)×10⁻⁵ kg / c.
+        </p>
+
+        <h3>5.2 “10 kg fat” oxidation example</h3>
+        <p>
+          Using the stoichiometry above, metabolizing 10 000 g of C₅₅H₁₀₄O₆ (~11.6 mol) consumes ~29 kg O₂ and produces ~28 kg CO₂ and ~11 kg H₂O. In τ units:
+        </p>
+        <div class="equation">Δτ_CO₂ ≈ 28 000 g / c, Δτ_H₂O ≈ 11 000 g / c, Δτ_body ≈ −10 000 g / c.</div>
+      </section>
+
+      <section id="implications"><h2>6. Implications</h2>
+        <ul>
+          <li>Mass loss is directly measurable via gas exchange; τ renders this as a conserved flow between body and environment.</li>
+          <li>Proper accounting must include oxygen mass <em>in</em>, not only CO₂/H₂O mass <em>out</em>.</li>
+          <li>Calorimetry (energy) and spirometry (mass) provide two projections of the same τ-exchange.</li>
+        </ul>
+      </section>
+
+      <section id="conclusion"><h2>7. Conclusion</h2>
+        <p>
+          Breathing is a τ-transport process: oxidation converts stored τ (mass/energy) into gaseous τ (CO₂/H₂O) and thermal τ (heat). This yields concrete, testable relations linking VO₂/VCO₂, heat, and body-mass change—placing everyday physiology within the same τ-first substrate as fundamental physics.
+        </p>
+      </section>
+
+      <section id="references"><h2>References</h2>
+        <ol>
+          <li>Standard biochemistry texts on oxidative metabolism and respiratory quotient (RQ).</li>
+          <li>Indirect calorimetry (Weir-type) formulations for estimating energy expenditure from VO₂ and VCO₂.</li>
+          <li>Stoichiometric balances for fatty-acid oxidation (e.g., palmitate analogies) and average TAG models.</li>
+        </ol>
+      </section>
+
+      <section id="appendix-a"><h2>Appendix A — τ-First Biological Dictionary</h2>
+        <h3>A.1 Core definitions</h3>
+        <div class="equation">τ ≡ E/c³ ≡ m/c</div>
+        <div class="equation">Δτ_body = −(Δm_CO₂ + Δm_H₂O + …)/c,  Δτ_env = −Δτ_body</div>
+
+        <h3>A.2 Gas exchange & fluxes</h3>
+        <div class="equation">RQ = VCO₂ / VO₂</div>
+        <div class="equation">ṁ_CO₂ = ρ_CO₂ · \dot V_CO₂,  ṁ_O₂ = ρ_O₂ · \dot V_O₂  (adjusted to BTPS/STPD as applicable)</div>
+
+        <h3>A.3 Energy link</h3>
+        <div class="equation">EE ≈ 3.941·VO₂ + 1.106·VCO₂  (kcal·day⁻¹)</div>
+        <div class="equation">\dot τ_E = EE / c³, \dot τ_m = (ṁ_out − ṁ_in)/c</div>
+
+        <h3>A.4 Example stoichiometry</h3>
+        <div class="equation">C₅₅H₁₀₄O₆ + 78 O₂ → 55 CO₂ + 52 H₂O + energy</div>
+
+        <h3>A.5 Operational identities</h3>
+        <div class="equation">Δm_body ≈ −(m_CO₂ + m_H₂O + m_other),  ΔE_body ≈ −(Q + W)</div>
+        <div class="equation">Consistency: Δτ_body ≈ (ΔE_body)/c³ ≈ (Δm_body)/c</div>
+      </section>
+
+      <section id="appendix-b"><h2>Appendix B — Test Protocols (Checklist)</h2>
+
+        <h3>B.1 Lab Protocols (Human)</h3>
+        <table>
+          <tr><th>Test</th><th>Observable</th><th>Procedure</th><th>Outcome</th></tr>
+          <tr>
+            <td>Indirect calorimetry</td>
+            <td>VO₂, VCO₂ (L·min⁻¹)</td>
+            <td>Metabolic cart; steady-state measures (rest/exercise)</td>
+            <td>Compute EE; infer τ-rate <code>\dot τ_E</code>; compare to mass flux <code>\dot τ_m</code></td>
+          </tr>
+          <tr>
+            <td>CO₂ capture & weighing</td>
+            <td>ṁ_CO₂ (g·h⁻¹)</td>
+            <td>Soda-lime or molecular sieve; gravimetric difference</td>
+            <td>Quantify mass-out via CO₂; cross-check with VCO₂</td>
+          </tr>
+          <tr>
+            <td>Humidity & water loss</td>
+            <td>ṁ_H₂O (g·h⁻¹)</td>
+            <td>Hygrometry of inspired/expired air; body weight change</td>
+            <td>Account for H₂O fraction of mass-out</td>
+          </tr>
+          <tr>
+            <td>Doubly labeled water</td>
+            <td>CO₂ production (mol·day⁻¹)</td>
+            <td>^2H/^18O isotopic washout (free-living)</td>
+            <td>Integrate to long-term τ-flux; compare with weight change</td>
+          </tr>
+          <tr>
+            <td>Direct calorimetry (optional)</td>
+            <td>Heat Q (kJ)</td>
+            <td>Calorimeter chamber or high-precision thermal sensors</td>
+            <td>Energy-out check vs EE; τ consistency</td>
+          </tr>
+        </table>
+
+        <h3>B.2 Analysis & Reporting</h3>
+        <ul>
+          <li>Report <strong>mass-in</strong> (O₂) and <strong>mass-out</strong> (CO₂, H₂O) explicitly.</li>
+          <li>Convert to τ via <code>τ = m/c</code> and <code>τ = E/c³</code>; verify <em>τ-consistency</em> across energy and mass channels.</li>
+          <li>State conditions (temp, pressure, BTPS/STPD corrections) and uncertainty.</li>
+          <li>Include a one-line balance: <code>Δτ_body + Δτ_env ≈ 0</code> (within measurement error).</li>
+        </ul>
+
+        <h3>B.3 Worked Example Template</h3>
+        <div class="equation">
+          Given: VO₂, VCO₂, duration T → EE(T), m_CO₂(T), m_H₂O(T).<br/>
+          Predict: Δm_body(T) ≈ −(m_CO₂ + m_H₂O + ...), ΔE_body(T) ≈ −EE(T).<br/>
+          Check: Δm_body/c ≈ EE(T)/c³.
+        </div>
+      </section>
+    </main>
+
+    <footer>© <span id="y"></span> Tristan White • Creative Commons BY-NC-SA 4.0</footer>
+  </div>
+  <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+</body>
+</html>
